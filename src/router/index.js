@@ -2,81 +2,82 @@
  * @Author: Tom
  * @LastEditors: Tom
  * @Date: 2022-03-04 16:49:05
- * @LastEditTime: 2022-03-07 11:48:46
+ * @LastEditTime: 2022-09-05 11:53:07
  * @Email: str-liang@outlook.com
  * @FilePath: \cscscs\src\router\index.js
  * @Environment: Win 10
  * @Description:
  */
-import Vue from "vue"
-import VueRouter from "vue-router"
-import data from "@/data/data2"
-import Home from "../views/Home.vue"
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import data from '@/data/data2'
+import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
+    path: '/',
+    name: 'Home',
     component: Home,
     children: [
       {
-        path: "/cs",
-        name: "cs",
+        path: '/cs',
+        name: 'cs',
         component: resolve => {
-          require(["@/views/modules/cs.vue"], resolve)
+          require(['@/views/modules/cs.vue'], resolve)
         },
       },
     ],
   },
   {
-    path: "/about",
-    name: "About",
+    path: '/about',
+    name: 'About',
     component: resolve => {
-      require(["../views/About.vue"], resolve)
+      require(['../views/About.vue'], resolve)
     },
   },
 ]
 
 export const asyncRotes = [
   {
-    path: "/",
-    name: "page1",
+    path: '/',
+    name: 'page1',
     component: Home,
     children: [
       {
-        path: "page1",
-        name: "page1",
+        path: 'page1',
+        name: 'page1',
         component: resolve => {
-          require(["../views/modules/page1.vue"], resolve)
+          require(['../views/modules/page1.vue'], resolve)
         },
       },
     ],
   },
   {
-    path: "/page2",
-    name: "page2",
+    path: '/page2',
+    name: 'page2',
     component: resolve => {
-      require(["../views/modules/page2.vue"], resolve)
+      require(['../views/modules/page2.vue'], resolve)
     },
   },
   {
-    path: "/page3",
-    name: "page3",
+    path: '/page3',
+    name: 'page3',
     component: resolve => {
-      require(["../views/modules/page3.vue"], resolve)
+      require(['../views/modules/page3.vue'], resolve)
     },
   },
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes,
 })
 
 function flterRoutes(arrVal) {
   return arrVal.map(item => {
-    let component = ""
+    let component = ''
     if (item.pid == 0) {
       component = Home
     } else {
